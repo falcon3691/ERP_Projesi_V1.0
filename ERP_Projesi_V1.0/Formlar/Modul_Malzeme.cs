@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace ERP_Projesi_V1._0
 {
-    public partial class Form1 : Form
+    public partial class Modul_Malzeme : Form
     {
-        public Form1()
+        public Modul_Malzeme()
         {
             InitializeComponent();
         }
+
     }
 }
