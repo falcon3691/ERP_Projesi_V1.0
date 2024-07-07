@@ -70,6 +70,11 @@
     <Compile Include="Formlar\Modul_Satis.Designer.cs">
       <DependentUpon>Modul_Satis.cs</DependentUpon>
     </Compile>
+    <Compile Include="KKP_V1DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KKP_V1DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Formlar\Form1.resx">
@@ -93,6 +98,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="KKP_V1DataSet.xsc">
+      <DependentUpon>KKP_V1DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="KKP_V1DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>KKP_V1DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="KKP_V1DataSet.xss">
+      <DependentUpon>KKP_V1DataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
