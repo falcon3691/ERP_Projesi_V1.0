@@ -36,21 +36,21 @@ namespace ERP_Projesi_V1._0
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.malzemeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.kKP_V1DataSet = new ERP_Projesi_V1._0.KKP_V1DataSet();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.kKP_V1DataSet = new ERP_Projesi_V1._0.KKP_V1DataSet();
-            this.malzemeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.malzemeTableAdapter = new ERP_Projesi_V1._0.KKP_V1DataSetTableAdapters.malzemeTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.adiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.miktariDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kKP_V1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.malzemeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kKP_V1DataSet)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -121,6 +121,16 @@ namespace ERP_Projesi_V1._0
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
+            // malzemeBindingSource
+            // 
+            this.malzemeBindingSource.DataMember = "malzeme";
+            this.malzemeBindingSource.DataSource = this.kKP_V1DataSet;
+            // 
+            // kKP_V1DataSet
+            // 
+            this.kKP_V1DataSet.DataSetName = "KKP_V1DataSet";
+            this.kKP_V1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.button3);
@@ -166,16 +176,6 @@ namespace ERP_Projesi_V1._0
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // kKP_V1DataSet
-            // 
-            this.kKP_V1DataSet.DataSetName = "KKP_V1DataSet";
-            this.kKP_V1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // malzemeBindingSource
-            // 
-            this.malzemeBindingSource.DataMember = "malzeme";
-            this.malzemeBindingSource.DataSource = this.kKP_V1DataSet;
-            // 
             // malzemeTableAdapter
             // 
             this.malzemeTableAdapter.ClearBeforeFill = true;
@@ -183,7 +183,7 @@ namespace ERP_Projesi_V1._0
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "ID";
             this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
@@ -192,7 +192,7 @@ namespace ERP_Projesi_V1._0
             // adiDataGridViewTextBoxColumn
             // 
             this.adiDataGridViewTextBoxColumn.DataPropertyName = "adi";
-            this.adiDataGridViewTextBoxColumn.HeaderText = "adi";
+            this.adiDataGridViewTextBoxColumn.HeaderText = "ADI";
             this.adiDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.adiDataGridViewTextBoxColumn.Name = "adiDataGridViewTextBoxColumn";
             this.adiDataGridViewTextBoxColumn.ReadOnly = true;
@@ -201,7 +201,7 @@ namespace ERP_Projesi_V1._0
             // miktariDataGridViewTextBoxColumn
             // 
             this.miktariDataGridViewTextBoxColumn.DataPropertyName = "miktari";
-            this.miktariDataGridViewTextBoxColumn.HeaderText = "miktari";
+            this.miktariDataGridViewTextBoxColumn.HeaderText = "MİKTARI";
             this.miktariDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.miktariDataGridViewTextBoxColumn.Name = "miktariDataGridViewTextBoxColumn";
             this.miktariDataGridViewTextBoxColumn.ReadOnly = true;
@@ -221,9 +221,9 @@ namespace ERP_Projesi_V1._0
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kKP_V1DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.malzemeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kKP_V1DataSet)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
