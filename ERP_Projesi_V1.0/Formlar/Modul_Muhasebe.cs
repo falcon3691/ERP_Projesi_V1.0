@@ -54,7 +54,6 @@ namespace ERP_Projesi_V1._0
         {
             DateTime Tarih = dateTimePicker1.Value;
             String tarih = Tarih.Year + "-" + Tarih.Month + "-" + Tarih.Day;
-            Console.Out.WriteLine(tarih);
             baglanti.Open();
             String sqlKomutu = "SELECT * FROM muhasebe WHERE tarih='" + tarih + "'";
             SqlCommand komut = new SqlCommand(sqlKomutu, baglanti);
@@ -71,11 +70,8 @@ namespace ERP_Projesi_V1._0
             String ilktarih = ilkTarih.Year + "-" + ilkTarih.Month + "-" + ilkTarih.Day;
             DateTime sonTarih = dateTimePicker2.Value;
             String sontarih = sonTarih.Year + "-" + sonTarih.Month + "-" + sonTarih.Day;
-            Console.Out.WriteLine(ilktarih);
-            Console.Out.WriteLine(sontarih);
             baglanti.Open();
             String sqlKomutu = "SELECT * FROM muhasebe WHERE tarih BETWEEN '" + ilktarih + "' AND '"+sontarih+"'";
-            Console.Out.WriteLine(sqlKomutu);
             SqlCommand komut = new SqlCommand(sqlKomutu, baglanti);
             SqlDataAdapter da = new SqlDataAdapter(komut);
             DataTable dt = new DataTable();
