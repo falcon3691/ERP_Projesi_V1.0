@@ -47,10 +47,12 @@ namespace ERP_Projesi_V1._0
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 56);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(284, 366);
+            this.dataGridView1.Size = new System.Drawing.Size(316, 366);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // button1
             // 
@@ -65,25 +67,26 @@ namespace ERP_Projesi_V1._0
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button2.Location = new System.Drawing.Point(157, 15);
+            this.button2.Location = new System.Drawing.Point(189, 15);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(139, 35);
             this.button2.TabIndex = 2;
             this.button2.Text = "FİŞİ TEMİZLE";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(302, 56);
+            this.panel1.Location = new System.Drawing.Point(339, 56);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(404, 334);
+            this.panel1.Size = new System.Drawing.Size(367, 334);
             this.panel1.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(308, 23);
+            this.label1.Location = new System.Drawing.Point(335, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 20);
             this.label1.TabIndex = 4;
@@ -123,7 +126,7 @@ namespace ERP_Projesi_V1._0
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.Location = new System.Drawing.Point(302, 393);
+            this.label5.Location = new System.Drawing.Point(334, 393);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(211, 29);
             this.label5.TabIndex = 8;
@@ -133,7 +136,7 @@ namespace ERP_Projesi_V1._0
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label6.Location = new System.Drawing.Point(537, 400);
+            this.label6.Location = new System.Drawing.Point(542, 400);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(164, 20);
             this.label6.TabIndex = 9;
