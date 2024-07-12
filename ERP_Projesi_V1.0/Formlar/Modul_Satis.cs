@@ -51,12 +51,13 @@ namespace ERP_Projesi_V1._0
             int Adet;
             int Fiyat = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString());
             int ToplamFiyat = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString());
-            bool durum = true;
+            bool durum = true, olurmu = true;
+
 
             if (Adlar.Count > 0)
             {
                 int index = 0;
-                for(int j = 0; j < Adlar.Count; j++)
+                for (int j = 0; j < Adlar.Count; j++)
                 {
                     if (Ad.Equals(Adlar[j]))
                     {
@@ -64,129 +65,173 @@ namespace ERP_Projesi_V1._0
                         index = j;
                     }
                 }
-
+                //Fişte bulunmayan 2. ve sonrasında eklenen ürünler
                 if (durum == true)
                 {
-                    //Listlere yeni eleman ekle
+                    if ((int.Parse(dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString())) > 0)
+                    {
+                        dataGridView1.Rows[e.RowIndex].Cells[1].Value = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString()) - 1;
+                        olurmu = true;
+                    }
+                    else
+                    {
+                        olurmu = false;
+                    }
+
+                    if (olurmu)
+                    {
+
+                        Adlar.Add(Ad);
+                        Adetler.Add(1);
+                        Fiyatlar.Add(Fiyat);
+                        ToplamFiyatlar.Add(ToplamFiyat);
+                        y = (Adlar.Count - 1) * 20;
+
+
+                        Label ad = new Label();
+                        ad.Text = Adlar[Adlar.Count - 1];
+                        ad.AutoSize = true;
+                        ad.Location = new Point(x, y);
+                        panel1.Controls.Add(ad);
+
+                        Label adet = new Label();
+                        adet.Text = Adetler[Adetler.Count - 1].ToString();
+                        adet.AutoSize = true;
+                        adet.Location = new Point(x + 150, y);
+                        panel1.Controls.Add(adet);
+
+                        Label fiyat = new Label();
+                        fiyat.Text = Fiyatlar[Fiyatlar.Count - 1].ToString();
+                        fiyat.AutoSize = true;
+                        fiyat.Location = new Point(x + 210, y);
+                        panel1.Controls.Add(fiyat);
+
+                        Label toplamFiyat = new Label();
+                        toplamFiyat.Text = ToplamFiyatlar[ToplamFiyatlar.Count - 1].ToString();
+                        toplamFiyat.AutoSize = true;
+                        toplamFiyat.Location = new Point(x + 300, y);
+                        panel1.Controls.Add(toplamFiyat);
+                    }
+
+
+                }
+                //Fişte bulunan ürünün tekrar eklenmesi
+                else if (durum == false)
+                {
+                    if ((int.Parse(dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString())) > 0)
+                    {
+                        dataGridView1.Rows[e.RowIndex].Cells[1].Value = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString()) - 1;
+                        olurmu = true;
+                    }
+                    else
+                    {
+                        olurmu = false;
+                    }
+                    if (olurmu)
+                    {
+
+                        int ilkX, sonX, ilkY, sonY;
+                        ToplamFiyatlar[index] += ToplamFiyat;
+                        Adetler[index] += 1;
+                        y = index * 20;
+                        if (index == 0)
+                        {
+                            ilkX = 0;
+                            sonX = 367;
+                            ilkY = y;
+                            sonY = 10;
+                        }
+                        else
+                        {
+                            ilkX = 0;
+                            sonX = 367;
+                            ilkY = y;
+                            sonY = y - (index * 10);
+                        }
+
+                        Rectangle regionToClear = new Rectangle(ilkX, ilkY, sonX, sonY);
+                        for (int i = panel1.Controls.Count - 1; i >= 0; i--)
+                        {
+                            Control ctrl = panel1.Controls[i];
+                            if (regionToClear.Contains(ctrl.Location))
+                            {
+                                panel1.Controls.RemoveAt(i);
+                            }
+                        }
+
+                        Label ad = new Label();
+                        ad.Text = Adlar[index];
+                        ad.AutoSize = true;
+                        ad.Location = new Point(x, y);
+                        panel1.Controls.Add(ad);
+
+                        Label adet = new Label();
+                        adet.Text = Adetler[index].ToString();
+                        adet.AutoSize = true;
+                        adet.Location = new Point(x + 150, y);
+                        panel1.Controls.Add(adet);
+
+                        Label fiyat = new Label();
+                        fiyat.Text = Fiyatlar[index].ToString();
+                        fiyat.AutoSize = true;
+                        fiyat.Location = new Point(x + 210, y);
+                        panel1.Controls.Add(fiyat);
+
+                        Label toplamFiyat = new Label();
+                        toplamFiyat.Text = ToplamFiyatlar[index].ToString();
+                        toplamFiyat.AutoSize = true;
+                        toplamFiyat.Location = new Point(x + 300, y);
+                        panel1.Controls.Add(toplamFiyat);
+                    }
+                }
+            }
+            //Fişe eklenen ilk ürün
+            else
+            {
+                if ((int.Parse(dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString())) > 0)
+                {
+                    dataGridView1.Rows[e.RowIndex].Cells[1].Value = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString()) - 1;
+                    olurmu = true;
+                }
+                else
+                {
+                    olurmu = false;
+                }
+
+                if (olurmu)
+                {
+
                     Adlar.Add(Ad);
                     Adetler.Add(1);
                     Fiyatlar.Add(Fiyat);
                     ToplamFiyatlar.Add(ToplamFiyat);
-                    y = (Adlar.Count - 1) * 20;
 
                     Label ad = new Label();
-                    ad.Text = Adlar[Adlar.Count - 1];
+                    ad.Text = Adlar[0];
                     ad.AutoSize = true;
                     ad.Location = new Point(x, y);
                     panel1.Controls.Add(ad);
 
                     Label adet = new Label();
-                    adet.Text = Adetler[Adetler.Count - 1].ToString();
+                    adet.Text = Adetler[0].ToString();
                     adet.AutoSize = true;
                     adet.Location = new Point(x + 150, y);
                     panel1.Controls.Add(adet);
 
                     Label fiyat = new Label();
-                    fiyat.Text = Fiyatlar[Fiyatlar.Count - 1].ToString();
+                    fiyat.Text = Fiyatlar[0].ToString();
                     fiyat.AutoSize = true;
                     fiyat.Location = new Point(x + 210, y);
                     panel1.Controls.Add(fiyat);
 
                     Label toplamFiyat = new Label();
-                    toplamFiyat.Text = ToplamFiyatlar[ToplamFiyatlar.Count - 1].ToString();
-                    toplamFiyat.AutoSize = true;
-                    toplamFiyat.Location = new Point(x + 300, y);
-                    panel1.Controls.Add(toplamFiyat);
-
-                }
-                else if (durum == false)
-                {
-                    //Listlerde var olan elemanın toplam fiyatını arttır
-                    int ilkX, sonX, ilkY, sonY;
-                    ToplamFiyatlar[index] += ToplamFiyat;
-                    Adetler[index] += 1;
-                    y = index * 20;
-                    if(index == 0)
-                    {
-                        ilkX = 0;
-                        sonX = 367;
-                        ilkY = y;
-                        sonY = 10;
-                    }
-                    else
-                    {
-                        ilkX = 0;
-                        sonX = 367;
-                        ilkY = y;
-                        sonY = y - (index * 10);
-                    }
-    
-                    Rectangle regionToClear = new Rectangle(ilkX, ilkY, sonX, sonY);
-                    for (int i = panel1.Controls.Count - 1; i >= 0; i--)
-                    {
-                        Control ctrl = panel1.Controls[i];
-                        if (regionToClear.Contains(ctrl.Location))
-                        {
-                            panel1.Controls.RemoveAt(i);
-                        }
-                    }
-
-                    Label ad = new Label();
-                    ad.Text = Adlar[index];
-                    ad.AutoSize = true;
-                    ad.Location = new Point(x, y);
-                    panel1.Controls.Add(ad);
-
-                    Label adet = new Label();
-                    adet.Text = Adetler[index].ToString();
-                    adet.AutoSize = true;
-                    adet.Location = new Point(x + 150, y);
-                    panel1.Controls.Add(adet);
-
-                    Label fiyat = new Label();
-                    fiyat.Text = Fiyatlar[index].ToString();
-                    fiyat.AutoSize = true;
-                    fiyat.Location = new Point(x + 210, y);
-                    panel1.Controls.Add(fiyat);
-
-                    Label toplamFiyat = new Label();
-                    toplamFiyat.Text = ToplamFiyatlar[index].ToString();
+                    toplamFiyat.Text = ToplamFiyatlar[0].ToString();
                     toplamFiyat.AutoSize = true;
                     toplamFiyat.Location = new Point(x + 300, y);
                     panel1.Controls.Add(toplamFiyat);
                 }
             }
-            else
-            {
-                Adlar.Add(Ad);
-                Adetler.Add(1);
-                Fiyatlar.Add(Fiyat);
-                ToplamFiyatlar.Add(ToplamFiyat);
 
-                Label ad = new Label();
-                ad.Text = Adlar[0];
-                ad.AutoSize = true;
-                ad.Location = new Point(x, y);
-                panel1.Controls.Add(ad);
-
-                Label adet = new Label();
-                adet.Text = Adetler[0].ToString();
-                adet.AutoSize = true;
-                adet.Location = new Point(x + 150, y);
-                panel1.Controls.Add(adet);
-
-                Label fiyat = new Label();
-                fiyat.Text = Fiyatlar[0].ToString();
-                fiyat.AutoSize = true;
-                fiyat.Location = new Point(x + 210, y);
-                panel1.Controls.Add(fiyat);
-
-                Label toplamFiyat = new Label();
-                toplamFiyat.Text = ToplamFiyatlar[0].ToString();
-                toplamFiyat.AutoSize = true;
-                toplamFiyat.Location = new Point(x + 300, y);
-                panel1.Controls.Add(toplamFiyat);
-            }
             genelToplam = 0;
             foreach (var item in ToplamFiyatlar)
             {
@@ -195,8 +240,29 @@ namespace ERP_Projesi_V1._0
             label6.Text = genelToplam.ToString();
             label6.Visible = true;
         }
+        //SATIŞ YAP butonu
+        private void button1_Click(object sender, EventArgs e)
+        {
+            baglanti.Open();
+            DateTime Tarih = DateTime.Today;
+            String tarih = Tarih.Year + "-" + Tarih.Month + "-" + Tarih.Day;
+            String eklemeKomutu = "INSERT INTO muhasebe(tarih, toplamFİyat)" +
+                               "VALUES('" + DateTime.Parse(tarih) + "', '" + genelToplam + "')";
+            SqlCommand komut1 = new SqlCommand(eklemeKomutu, baglanti);
+            komut1.ExecuteNonQuery();
+            baglanti.Close();
 
-
+            baglanti.Open();
+            for (int item = 0; item < dataGridView1.RowCount; item++)
+            {
+                String güncellemeKomutu = "UPDATE malzeme SET miktari='"+ dataGridView1.Rows[item].Cells[1].Value +"' " +
+                    "WHERE adi='"+ dataGridView1.Rows[item].Cells[0].Value +"'";
+                SqlCommand komut2 = new SqlCommand(güncellemeKomutu, baglanti);
+                komut2.ExecuteNonQuery();
+            }
+            baglanti.Close();
+        }
+        //FİŞİ TEMİZLE butonu
         private void button2_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
