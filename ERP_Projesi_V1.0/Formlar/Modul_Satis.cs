@@ -255,8 +255,8 @@ namespace ERP_Projesi_V1._0
             baglanti.Open();
             for (int item = 0; item < dataGridView1.RowCount; item++)
             {
-                String güncellemeKomutu = "UPDATE malzeme SET miktari='"+ dataGridView1.Rows[item].Cells[1].Value +"' " +
-                    "WHERE adi='"+ dataGridView1.Rows[item].Cells[0].Value +"'";
+                String güncellemeKomutu = "UPDATE malzeme SET miktari='" + dataGridView1.Rows[item].Cells[1].Value + "' " +
+                    "WHERE adi='" + dataGridView1.Rows[item].Cells[0].Value + "'";
                 SqlCommand komut2 = new SqlCommand(güncellemeKomutu, baglanti);
                 komut2.ExecuteNonQuery();
             }
@@ -266,10 +266,25 @@ namespace ERP_Projesi_V1._0
         private void button2_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
+
+            for (int i = 0; i < Adlar.Count; i++)
+            {
+                for (int j = 0; j < dataGridView1.Rows.Count; j++)
+                {
+                    if (dataGridView1.Rows[j].Cells[0].Value == Adlar[i])
+                    {
+                        dataGridView1.Rows[j].Cells[1].Value = int.Parse(dataGridView1.Rows[j].Cells[1].Value.ToString()) + Adetler[i];
+                    }
+                }
+            }
+
             Adlar.Clear();
             Adetler.Clear();
             Fiyatlar.Clear();
             ToplamFiyatlar.Clear();
+            genelToplam = 0;
+            label6.Text = genelToplam.ToString();
+            y = 0;
         }
     }
 }

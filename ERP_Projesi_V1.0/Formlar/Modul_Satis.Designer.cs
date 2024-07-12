@@ -140,9 +140,9 @@ namespace ERP_Projesi_V1._0
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
             this.label6.Location = new System.Drawing.Point(551, 393);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(248, 29);
+            this.label6.Size = new System.Drawing.Size(27, 29);
             this.label6.TabIndex = 9;
-            this.label6.Text = "<GENEL_TOPLAM>";
+            this.label6.Text = "0";
             this.label6.Visible = false;
             // 
             // label7
