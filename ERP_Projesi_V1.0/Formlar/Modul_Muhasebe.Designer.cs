@@ -101,6 +101,7 @@ namespace ERP_Projesi_V1._0
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.CustomFormat = "";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(59, 33);
             this.dateTimePicker1.Name = "dateTimePicker1";

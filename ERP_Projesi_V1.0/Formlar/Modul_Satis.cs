@@ -245,9 +245,9 @@ namespace ERP_Projesi_V1._0
         {
             baglanti.Open();
             DateTime Tarih = DateTime.Today;
-            String tarih = Tarih.Year + "-" + Tarih.Month + "-" + Tarih.Day;
+            String tarih = Tarih.Month + "." + Tarih.Day + "." + Tarih.Year;
             String eklemeKomutu = "INSERT INTO muhasebe(tarih, toplamFİyat)" +
-                               "VALUES('" + DateTime.Parse(tarih) + "', '" + genelToplam + "')";
+                               "VALUES('" + tarih + "', '" + genelToplam + "')";
             SqlCommand komut1 = new SqlCommand(eklemeKomutu, baglanti);
             komut1.ExecuteNonQuery();
             baglanti.Close();
@@ -261,11 +261,11 @@ namespace ERP_Projesi_V1._0
                 komut2.ExecuteNonQuery();
             }
             baglanti.Close();
+            temizle();
         }
         //FİŞİ TEMİZLE butonu
         private void button2_Click(object sender, EventArgs e)
         {
-            panel1.Controls.Clear();
 
             for (int i = 0; i < Adlar.Count; i++)
             {
@@ -277,7 +277,11 @@ namespace ERP_Projesi_V1._0
                     }
                 }
             }
-
+            temizle();
+        }
+        public void temizle()
+        {
+            panel1.Controls.Clear();
             Adlar.Clear();
             Adetler.Clear();
             Fiyatlar.Clear();
